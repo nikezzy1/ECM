@@ -9,10 +9,17 @@ import java.io.Serializable;
  *
  */
 public class ServiceException extends RuntimeException implements Serializable{
+    private int code;
+    private String msg;
 
-    private static final long serialVersionUID = 1213855733833039552L;
+    //private static final long serialVersionUID = 1213855733833039552L;
 
     public ServiceException() {
+    }
+
+    public ServiceException(ErrorCode errorCode) {
+        this.msg = errorCode.getDescription();
+        this.code = errorCode.getCode();
     }
 
     public ServiceException(String message) {
@@ -21,5 +28,18 @@ public class ServiceException extends RuntimeException implements Serializable{
 
     public ServiceException(String message, Throwable cause) {
         super(message, cause);
+    }
+
+    public ServiceException(int code, String msg) {
+        this.msg = msg;
+        this.code = code;
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    public String getMsg() {
+        return msg;
     }
 }
