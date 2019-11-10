@@ -1,4 +1,4 @@
-package com.example.demo.core.constant;
+package com.example.demo.core;
 
 public class ProjectConstant {
 

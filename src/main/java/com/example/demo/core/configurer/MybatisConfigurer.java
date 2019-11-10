@@ -1,4 +1,4 @@
-package com.example.demo.core.constant.configurer;
+package com.example.demo.core.configurer;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
