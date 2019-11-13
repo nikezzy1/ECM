@@ -3,7 +3,7 @@ package ls.ecm.controller;
 
 import ls.ecm.core.ret.RetResponse;
 import ls.ecm.core.ret.RetResult;
-import ls.ecm.model.UserInfo;
+import ls.ecm.model.TestUserInfo;
 import ls.ecm.service.UserInfoService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("userInfo")
-public class UserInfoController {
+public class TestUserInfoController {
 
     @Resource
     private UserInfoService userInfoService;
@@ -26,17 +26,17 @@ public class UserInfoController {
     }
 
     @PostMapping("/selectById")
-    public RetResult<UserInfo> selectById(Integer id){
-        UserInfo userInfo = userInfoService.selectById(id);
-        return RetResponse.makeOKRsp(userInfo);
+    public RetResult<TestUserInfo> selectById(Integer id){
+        TestUserInfo testUserInfo = userInfoService.selectById(id);
+        return RetResponse.makeOKRsp(testUserInfo);
     }
 
     @PostMapping("/testException")
-    public RetResult<UserInfo> testException(Integer id){
+    public RetResult<TestUserInfo> testException(Integer id){
         List a = null;
         a.size();
-        UserInfo userInfo = userInfoService.selectById(id);
-        return RetResponse.makeOKRsp(userInfo);
+        TestUserInfo testUserInfo = userInfoService.selectById(id);
+        return RetResponse.makeOKRsp(testUserInfo);
     }
 
 }

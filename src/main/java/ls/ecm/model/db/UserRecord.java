@@ -15,8 +15,6 @@ public class UserRecord implements Serializable {
     private String salt;
     private String idCardNumber;
     private String idCardImagePath;
-    private String transactionPassword;
-    private long bankId;
     private NaturalPersonStatus status;
     private String channelId;
     private AuditFlowRole auditFlowRole;
@@ -28,8 +26,8 @@ public class UserRecord implements Serializable {
     }
 
     public UserRecord(Long id, String phone, String name, String salt, String password,
-                      String idCardNumber, String idCardImagePath, String transactionPassword,
-                      long bankId, NaturalPersonStatus status, String channelId, AuditFlowRole auditFlowRole,
+                      String idCardNumber, String idCardImagePath, NaturalPersonStatus status,
+                      String channelId, AuditFlowRole auditFlowRole,
                       String selfPhone, String cfcaUserId) {
         super();
         this.id = id;
@@ -37,10 +35,8 @@ public class UserRecord implements Serializable {
         this.name = name;
         this.salt = salt;
         this.password = password;
-        this.transactionPassword = transactionPassword;
         this.idCardNumber = idCardNumber;
         this.idCardImagePath = idCardImagePath;
-        this.bankId = bankId;
         this.status = status;
         this.channelId = channelId;
         this.auditFlowRole = auditFlowRole;

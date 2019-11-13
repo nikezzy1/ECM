@@ -73,11 +73,6 @@ public class NaturalPersonDao {
     }
 
     @Transactional
-    public void updateTransactionPassword(long naturalPersonId, String transactionPassword) throws ServiceException {
-        userMapper.setTransactionPassword(naturalPersonId, transactionPassword);
-    }
-
-    @Transactional
     public void updateIdCardInfo(long naturalPersonId, String name, String idCardNumber) throws ServiceException {
         Integer result = userMapper.updateIdCardInfo(naturalPersonId, name, idCardNumber);
         checkDBResult(result);
@@ -105,12 +100,6 @@ public class NaturalPersonDao {
     @Transactional
     public void updateNaturalPersonStatus(long naturalPersonId, NaturalPersonStatus naturalPersonStatus) throws ServiceException {
         Integer result = userMapper.updateNaturalPersonStatus(naturalPersonId, naturalPersonStatus.getType());
-        checkDBResult(result);
-    }
-
-    @Transactional
-    public void updateBankId(Long naturalPersonId, Long bankId) throws ServiceException {
-        Integer result = userMapper.updateBankId(naturalPersonId, bankId);
         checkDBResult(result);
     }
 

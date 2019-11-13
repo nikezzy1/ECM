@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/"
+	threshold="all">
+
+	<appender name="SystemLogFile"
+		class="cpcn.dsp.institution.simulator.utils.DailySizeRollingFileAppender">
+		<param name="File"
+			value="/logs/CPCN/DSP/DSPInstitutionSimulator/DSPInstitutionSimulator.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd'.log'" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="|%d{yyyy-MM-dd HH:mm:ss.SSS}|%5p|%5t|%l|%m%n" />
+		</layout>
+	</appender>
+
+
+	<logger name="system" additivity="false">
+		<level class="org.apache.log4j.Level" value="info" />
+		<appender-ref ref="SystemLogFile" />
+	</logger>
+	<logger name="service" additivity="false">
+		<level class="org.apache.log4j.Level" value="info" />
+		<appender-ref ref="SystemLogFile" />
+	</logger>
+	<logger name="dao" additivity="false">
+		<level class="org.apache.log4j.Level" value="info" />
+		<appender-ref ref="SystemLogFile" />
+	</logger>
+
+
+	<root>
+		<priority value="info" />
+		<appender-ref ref="SystemLogFile" />
+	</root>
+
+</log4j:configuration>

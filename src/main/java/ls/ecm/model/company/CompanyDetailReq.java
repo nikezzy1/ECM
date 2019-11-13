@@ -1,12 +1,11 @@
-package ls.ecm.model.db;
+package ls.ecm.model.company;
 
 import lombok.Data;
 
 @Data
-public class CompanyRecord {
-    private long id;
+public class CompanyDetailReq {
     private String companyName;
     private String licenseNo;
-    private String cfcaUserId;
+    private String companyType;
     private String channelId;
 }

@@ -1,0 +1,150 @@
+spring:
+
+  jackson:
+    time-zone: GMT+8
+
+  jpa:
+    open-in-view: false
+    show-sql: true
+    hibernate:
+      ddl-auto:
+
+  datasource:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      password: ecm_dev0508
+      url: jdbc:mysql://rm-8vb1a77wawpb9969kno.mysql.zhangbei.rds.aliyuncs.com/ecm_dev?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&autoReconnect=true&failOverReadOnly=false
+      username: ecm_dev
+
+  mvc:
+      throw-exception-if-no-handler-found: true
+
+  resources:
+      add-mappings: false
+
+
+  druid:
+      # 对于建立时间超过removeAbandonedTimeout的连接强制关闭
+      removeAbandoned: true
+      # 指定连接建立多长时间就需要被强制关闭
+      removeAbandonedTimeout: 180
+      # 指定发生removeabandoned的时候，是否记录当前线程的堆栈信息到日志中
+      logAbandoned: true
+      maxActive: 20
+      initial-size: 2
+      minIdle: 2
+      maxWait: 30000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 1
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxPoolPreparedStatementPerConnectionSize: 20
+      urlMapping: /druid/*
+      resetEnable: true
+      loginUsername: root
+      loginPassword: "root#123"
+      # filters: stat,wall,log4j,slf4j
+      filters: stat,wall,slf4j
+      useGlobalDataSourceStat: true
+      stat:
+        mergeSql: true
+        slowSqlMillis: 3000
+        logSlowSql: false
+#  flyway:
+#    enabled: true
+#    sql-migration-prefix: "V"
+#    encoding: UTF-8
+#    baselineVersion: 0
+#    table: csp_schema_version
+#    baseline-on-migrate: true
+#    validate-on-migrate: true
+  servlet:
+    multipart:
+      # 限制单个文件的最大值
+      max-file-size: 30MB
+      # 限制上传的多个文件的总大小
+      max-request-size: 30MB
+  #platfor-common 支持redis缓存
+  redis:
+    host: 39.98.180.134
+    port: 9736
+    password: linkus0508
+    lettuce:
+      pool:
+        max-active: 8
+        max-wait: -1ms
+        max-idle: 8
+        min-idle: 0
+
+
+#platform-common 支持oss文件管理
+oss:
+  url: http://oss-cn-hangzhou.aliyuncs.com
+  key: LTAIx9cPlIw6Wmv1
+  secret: eZ2K39Tu9p3nOzigP1Crwp9z4cWzMH
+  name: productlingsiscf
+  path:
+    #platform-ecm 合同oss路径
+    contract: ecm/contract
+    #platform-ecm 合同模板oss路径
+    template: ecm/template
+
+#CFCA 安心签相关配置
+cfca:
+  #prod
+#  platid: 7D7FDA2619D81A77E053025B210A95EA
+  #cfca的配置
+#  jkspath: ./jks/anxinsign.jks
+#  jkspwd: 335234
+#  alias: anxinsign
+#  url: https://cs.anxinsign.com/FEP/
+
+  #test test test
+  platid: 7A703C160102018DE05311016B0A27AA
+  #创建好的合同临时存放路径
+  pdf: /home/app/contract/pdf
+  #cfca的配置
+  jkspath: ./jks/admin_test.jks
+  jkspwd: 335234
+  alias: anxinsign@上海灵思企业发展有限公司@z91310118ma1jmbcl43@1 (cfca test oca1)
+  url: https://210.74.42.33:9443/FEP/
+
+
+  webapp:
+    cors:
+      # 设置允许跨域的路径。如为空，则不进行CORS的设置
+      corsMappingUrl: /api/**, /test/**
+      # 设置允许跨域请求的域名，例如：http://api.lingsi.com
+      allowedOrigins: "*"
+      # 是否允许证书。如果要把Cookie和HTTP认证信息发到服务器，请设定为true
+      allowCredentials: true
+      # 允许发起的跨域请求方法。默认值：GET, POST, DELETE, PUT
+      allowedMethods: GET, POST, DELETE, PUT
+      # 跨域允许时间（单位：秒）
+      maxAge: 3600
+    swagger:
+      # 是否启用swagger
+      enabled: true
+      title: Lingsi Platform
+      description: Lingsi Platform API 文档
+      version: v1
+      termsOfServiceUrl: http://xxx.lingsi.com/api
+      name: LingSi
+      url: www.lingsi.com
+      email: admin@lingsi.com
+
+logging:
+  level:
+    root: INFO
+    org.flywaydb: 'DEBUG'
+    org.hibernate: INFO
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    org.hibernate.type.descriptor.sql.BasicExtractor: TRACE
+    de.codecentric.boot.admin: 'INFO'
+    com.lingsi.framework.webapp.aspect.LoggingAspect: 'DEBUG'
+    com.lingsi.arbitration: 'DEBUG'
+
+server:
+  port: 8080

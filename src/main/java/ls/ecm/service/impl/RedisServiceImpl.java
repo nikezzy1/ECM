@@ -5,6 +5,7 @@ import ls.ecm.exception.ServiceException;
 import ls.ecm.service.RedisService;
 import ls.ecm.service.WechatService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 import redis.clients.jedis.Jedis;
@@ -14,6 +15,16 @@ import redis.clients.jedis.Jedis;
 public class RedisServiceImpl implements RedisService {
     @Autowired
     private Environment environment;
+
+//    @Value("redis.port")
+//    private String port;
+//
+//    @Value("redis.host")
+//    private String host;
+//
+//    @Value("redis.password")
+//    private String password;
+
     @Autowired
     private WechatService wechatService;
 
@@ -24,23 +35,6 @@ public class RedisServiceImpl implements RedisService {
     private final String AUTHORIZE_PERSON = "AUTHORIZE:%s:%s";
     private final String APPLY_CONTRACT = "CONTRACT:%s:%s";
 
-    @Override
-    public void checkWechatAlivenessDetectCounter(String appId, long naturalPersonId) throws ServiceException {
-        String wechatAlivenessDetectCounter = String.format(WECHAT_ALIVENESS_DETECT_COUNTER, appId, String.valueOf(naturalPersonId));
-        String counter = getJedis().get(wechatAlivenessDetectCounter);
-        if (counter == null) {
-            getJedis().set(wechatAlivenessDetectCounter, "1");
-            getJedis().expire(wechatAlivenessDetectCounter, 60 * 60 * 24);
-            return;
-        }
-        // FIXME: remove counter
-        if (Integer.valueOf(counter) >= 5) {
-            throw new ServiceException(ErrorCode.WECHATAlivenessDetectLimitException);
-        }
-        int alivenessDetectCounter = Integer.valueOf(counter);
-        alivenessDetectCounter += 1;
-        getJedis().set(wechatAlivenessDetectCounter, String.valueOf(alivenessDetectCounter));
-    }
 
     public Jedis getJedis() {
         String host = environment.getProperty("redis.host");
@@ -76,12 +70,12 @@ public class RedisServiceImpl implements RedisService {
 
     @Override
     public boolean checkSMSCode(String channelId, String phone, String code) throws ServiceException {
- //        String key = String.format(SMS_PREFIX_CODE, channelId, phone);
- //        String sentCode = getJedis().get(key);
- //        if (sentCode != null && sentCode.equals(code)) {
- //           getJedis().del(key);
+         String key = String.format(SMS_PREFIX_CODE, channelId, phone);
+         String sentCode = getJedis().get(key);
+         if (sentCode != null && sentCode.equals(code)) {
+            getJedis().del(key);
             return true;
- //       }
- //       throw new ServiceException(ErrorCode.CaptchaErrorException);
+        }
+        throw new ServiceException(ErrorCode.CaptchaErrorException);
     }
 }

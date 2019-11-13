@@ -7,7 +7,7 @@ import javax.persistence.Id;
 
 
 @Data
-public class UserInfo {
+public class TestUserInfo {
 
     /**
      * 主键

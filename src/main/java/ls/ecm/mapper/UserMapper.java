@@ -13,9 +13,7 @@ public interface UserMapper {
                 @Result(property = "name", column = "name"),
                 @Result(property = "phone", column = "phone"),
                 @Result(property = "title", column = "title"),
-                @Result(property = "transactionPassword", column = "transaction_password"),
                 @Result(property = "idCardNumber", column = "id_card_number"),
-                @Result(property = "bankId", column = "bank_id"),
                 @Result(property = "channelId", column = "channel_id"),
                 @Result(property = "status", column = "status", typeHandler = EnumOrdinalTypeHandler.class, javaType = NaturalPersonStatus.class),
                 @Result(property = "auditFlowRole", column = "audit_flow_role", typeHandler = EnumOrdinalTypeHandler.class, javaType = AuditFlowRole.class),
@@ -31,9 +29,7 @@ public interface UserMapper {
                 @Result(property = "name", column = "name"),
                 @Result(property = "phone", column = "phone"),
                 @Result(property = "title", column = "title"),
-                @Result(property = "transactionPassword", column = "transaction_password"),
                 @Result(property = "idCardNumber", column = "id_card_number"),
-                @Result(property = "bankId", column = "bank_id"),
                 @Result(property = "channelId", column = "channel_id"),
                 @Result(property = "status", column = "status", typeHandler = EnumOrdinalTypeHandler.class, javaType = NaturalPersonStatus.class),
                 @Result(property = "auditFlowRole", column = "audit_flow_role", typeHandler = EnumOrdinalTypeHandler.class, javaType = AuditFlowRole.class),
@@ -48,9 +44,7 @@ public interface UserMapper {
                 @Result(property = "name", column = "name"),
                 @Result(property = "phone", column = "phone"),
                 @Result(property = "title", column = "title"),
-                @Result(property = "transactionPassword", column = "transaction_password"),
                 @Result(property = "idCardNumber", column = "id_card_number"),
-                @Result(property = "bankId", column = "bank_id"),
                 @Result(property = "channelId", column = "channel_id"),
                 @Result(property = "status", column = "status", typeHandler = EnumOrdinalTypeHandler.class, javaType = NaturalPersonStatus.class),
                 @Result(property = "auditFlowRole", column = "audit_flow_role", typeHandler = EnumOrdinalTypeHandler.class, javaType = AuditFlowRole.class),
@@ -81,9 +75,6 @@ public interface UserMapper {
                                  @Param("name") String name,
                                  @Param("idCardNumber") String idCardNumber);
 
-        @Update("update natural_person set bank_id = #{bankId} where id = #{naturalPersonId}")
-        Integer updateBankId(@Param("naturalPersonId") Long naturalPersonId,
-                             @Param("bankId") Long bankId);
 
         @Update("update natural_person set cfca_user_id = #{cfcaUserId} where id = #{naturalPersonId}")
         Integer updateCFCAUserId(@Param("naturalPersonId") Long naturalPersonId,
@@ -98,9 +89,6 @@ public interface UserMapper {
                 @Param("naturalPersonId") long naturalPersonId,
                 @Param("auditFlowRole") String auditFlowRole);
 
-        @Update("update natural_person set transaction_password = #{password} where id = #{naturalPersonId}")
-        Integer setTransactionPassword(@Param("naturalPersonId") Long naturalPersonId,
-                                       @Param("password") String password);
 
         @Update("update natural_person set status = #{status} where id = #{naturalPersonId}")
         Integer updateNaturalPersonStatus(

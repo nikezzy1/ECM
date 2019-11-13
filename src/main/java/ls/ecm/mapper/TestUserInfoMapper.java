@@ -1,10 +1,10 @@
 package ls.ecm.mapper;
 
 
-import ls.ecm.model.UserInfo;
+import ls.ecm.model.TestUserInfo;
 import org.apache.ibatis.annotations.*;
 
-public interface UserInfoMapper {
+public interface TestUserInfoMapper {
 
     @Select("select * from user_info where id = #{id}")
     @Results(value = {
@@ -12,5 +12,5 @@ public interface UserInfoMapper {
             @Result(property = "userName", column = "userName" ),
             @Result(property = "password", column = "password" )
     })
-    UserInfo selectById(@Param("id") Integer id);
+    TestUserInfo selectById(@Param("id") Integer id);
 }

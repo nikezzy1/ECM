@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 
 public interface RedisService {
-    void checkWechatAlivenessDetectCounter(String appId, long naturalPersonId) throws ServiceException;
 
     String getAccessToken(String appId) throws Exception;
 

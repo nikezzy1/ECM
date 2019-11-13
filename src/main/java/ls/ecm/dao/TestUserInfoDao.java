@@ -1,19 +1,19 @@
 package ls.ecm.dao;
 
 import ls.ecm.exception.ServiceException;
-import ls.ecm.mapper.UserInfoMapper;
-import ls.ecm.model.UserInfo;
+import ls.ecm.mapper.TestUserInfoMapper;
+import ls.ecm.model.TestUserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 @Component
-public class UserInfoDao {
+public class TestUserInfoDao {
     @Autowired
-    private UserInfoMapper userInfoMapper;
+    private TestUserInfoMapper testUserInfoMapper;
 
     @Transactional
-    public UserInfo test(Integer id) throws ServiceException {
-        return userInfoMapper.selectById(id);
+    public TestUserInfo test(Integer id) throws ServiceException {
+        return testUserInfoMapper.selectById(id);
     }
 }

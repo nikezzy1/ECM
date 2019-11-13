@@ -1,9 +1,9 @@
 package ls.ecm.service;
 
-import ls.ecm.model.UserInfo;
+import ls.ecm.model.TestUserInfo;
 
 public interface UserInfoService {
 
-    UserInfo selectById(Integer id);
+    TestUserInfo selectById(Integer id);
 
 }

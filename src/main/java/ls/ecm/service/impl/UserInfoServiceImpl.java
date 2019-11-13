@@ -1,8 +1,8 @@
 package ls.ecm.service.impl;
 
 
-import ls.ecm.dao.UserInfoDao;
-import ls.ecm.model.UserInfo;
+import ls.ecm.dao.TestUserInfoDao;
+import ls.ecm.model.TestUserInfo;
 import ls.ecm.service.UserInfoService;
 import org.springframework.stereotype.Component;
 
@@ -13,11 +13,11 @@ import javax.annotation.Resource;
 public class UserInfoServiceImpl implements UserInfoService {
 
     @Resource
-    private UserInfoDao userInfoDao;
+    private TestUserInfoDao testUserInfoDao;
 
     @Override
-    public UserInfo selectById(Integer id){
-      return userInfoDao.test(id);
+    public TestUserInfo selectById(Integer id){
+      return testUserInfoDao.test(id);
        // return userInfoMapper.selectById(id);
     }
 }

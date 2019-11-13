@@ -1,6 +1,7 @@
 package ls.ecm.model.vo;
 
 import lombok.Data;
+import ls.ecm.model.enums.AuditFlowRole;
 
 @Data
 public class ProfileVO {
@@ -8,9 +9,7 @@ public class ProfileVO {
     private String name;
     private String idCardNumber;
     private String phone;
-    private Long bankId;
-    private String bankName;
-    //private AuditFlowRole auditFlowRole;
+    private AuditFlowRole auditFlowRole;
     // 经过实名认证的手机号
     private String realNamePhone;
     private String bankNo;
