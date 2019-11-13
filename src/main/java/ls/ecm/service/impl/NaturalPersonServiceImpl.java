@@ -62,7 +62,7 @@ public class NaturalPersonServiceImpl implements NaturalPersonService {
 
     @Override
     public UserVO register(RegisterReq registerReq) throws ServiceException {
-        redisService.checkSMSCode(registerReq.getChannelId(), registerReq.getPhone(), registerReq.getCode());
+        //redisService.checkSMSCode(registerReq.getChannelId(), registerReq.getPhone(), registerReq.getCode());
         UserRecord userRecord = naturalPersonDao.getByPhone(registerReq.getPhone(), registerReq.getChannelId());
 
         if (userRecord == null) {
@@ -81,7 +81,7 @@ public class NaturalPersonServiceImpl implements NaturalPersonService {
         UserVO userVO = new UserVO();
         userVO.setPhone(userRecord.getPhone());
         userVO.setNaturalPersonId(userRecord.getId());
-        userVO.setToken(JWTUtil.generateToken(userRecord.getId(), registerReq.getChannelId()));
+        //userVO.setToken(JWTUtil.generateToken(userRecord.getId(), registerReq.getChannelId()));
         return userVO;
     }
 

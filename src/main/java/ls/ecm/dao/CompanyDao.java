@@ -24,12 +24,6 @@ public class CompanyDao {
 
     @Autowired
     private CompanyMapper companyMapper;
-    @Autowired
-    private PrivilegeMapper privilegeMapper;
-    @Autowired
-    private UserMapper userMapper;
-    @Autowired
-    private ExtraInfoMapper extraInfoMapper;
 
     @Transactional
     public CompanyRecord addCompany(CompanyDetailReq companyDetailReq) throws ServiceException {
